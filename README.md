@@ -30,7 +30,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` unzip the cluster:
 
 # Configure the Cluster Agent
 
-In the cluster directory, modify the cluster-agent.yaml
+In the cluster agent directory, modify the resource definition `cluster-agent.yaml`
 
 `cd cluster-agent`
 
@@ -44,7 +44,7 @@ account: "<account-name>"
 image: "docker.io/appdynamics/cluster-agent:4.5.16"
 ````
 
-The above uses the `image` provided by AppDynamics for Ubuntu. This ok for this lab.
+The above uses the Cluster Agent `image` provided by AppDynamics for Ubuntu. This ok for this lab.
 
 Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSpaces:
 ````
@@ -58,7 +58,7 @@ For more details, review [Install The Cluster Agent](https://docs.appdynamics.co
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
 
-In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script ctl.sh:
+In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script `ctl.sh`
 
 ### Update Ubuntu
 ````./ctl.sh ubuntu-update````
@@ -78,7 +78,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using 
 
 ````./ctl.sh pods-create````
 
-The above command will create a namespace called "test" and deploy two pods (alpine1,alpine2) with single containers, and two services (busyboxes1, busyboxes2) each with two containers.
+The above command will create a namespace called "test" and deploy two pods (alpine1, alpine2) with single containers, and two services (busyboxes1, busyboxes2) each with two containers.
 
 Review the K8s resource definitions in the directory pods for details of these resources.
 
@@ -88,7 +88,7 @@ Rewview what services, pods, namesspaces are running in the cluster using the co
 
 # Deploy the AppDynamics Cluster Agent
 
-Obtain the Account Access Key from AppDynamics SaaS controller and configure the enviroment variable:
+Obtain the Account Access Key from the AppDynamics SaaS controller and configure the enviroment variable:
 
 `export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=<access-key>`
 
@@ -100,7 +100,7 @@ Deploy and start the AppDynamics Cluster Agent using the command:
 
 Please note the above command will look for the Cluster Agent resources in the sub-directory `cluster-agent`
 
-Check that the AppDynamics Cluster Agent and Operator are in the `Running` state to the cluster and running succesfully:
+Check that the AppDynamics Cluster Agent and Operator are in the `Running` state`, using the command:
 
 ````microk8s.kubectl get pods,services --all-namespaces````
 
@@ -118,4 +118,4 @@ Details of how to use the AppDynamics Cluster Agent Visibility are provided here
 
 Review the automation script `ctl.sh` for exact details of how this deployment was performed and configured.
 
-Thank you for using this lab please provide feed back. Fork, improve and PR.
+Thank you for using this lab please provide feedback. Fork, improve and PR.
