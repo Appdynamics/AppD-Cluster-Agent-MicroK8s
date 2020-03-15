@@ -11,13 +11,14 @@ Read more: https://microk8s.io/
 
 This lab is designed to run on Ubuntu, using MicroK8s and Docker CE
 
-git clone https://github.com/APPDRYDER/AppD-Cluster-Agent-MicroK8s.git
+`git clone https://github.com/APPDRYDER/AppD-Cluster-Agent-MicroK8s.git`
 
 `cd AppD-Cluster-Agent-Microk8s`
 
 # AppDynamics Cluster agent
 
-Download the cluster agent from: https://download.appdynamics.com/download/#version=&apm=cluster-agent&os=&platform_admin_os=&appdynamics_cluster_os=&events=&eum=&page=1
+Download the cluster agent from: [AppDynamics Downloads](https://download.appdynamics.com/download/#version=&apm=cluster-agent&os=&platform_admin_os=&appdynamics_cluster_os=&events=&eum=&page=1
+)
 
 This will download the zip archive: appdynamics-cluster-agent-ubuntu-4.5.16.780.zip
 
@@ -36,7 +37,6 @@ In the cluster directory, modify the cluster-agent.yaml
 Edit cluster-agent.yaml
 
 Modify the fields:
-
 ````
 appName: "<app-name>"
 controllerUrl: "http://<appdynamics-controller-host>:8080"
@@ -82,6 +82,29 @@ Review the K8s resource definitions in the directory pods for details of these r
 Rewview what services, pods, namesspaces are running in the cluster using the command:
 
 ````microk8s.kubectl get pods,services --all-namespaces````
+
+# Deploy the AppDynamics Cluster Agent
+
+In the directory: cluster-agent
+
+Obtain the Account Access Key from AppDynamics SaaS controller and configure the enviroment variable:
+
+`export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=<access-key>`
+
+Deploy and start the AppDynamics Cluster Agent using the command:
+`./ctl.sh appd-install-cluster-agent`
+
+Check that the AppDynamics Cluster Agent and Operator are deployed to the cluster and running succesfully:
+
+````microk8s.kubectl get pods,services --all-namespaces````
+
+# AppDynamics Cluster Agent Visibilty
+
+Login into the AppDynamics Conroller and click through the Servers tab to the Cluster view. The cluster named by the field `appName: "<app-name>"` should be visible.
+
+Click into this cluster to see the visibility AppDynamics provides into Kubernetes.
+
+Details of how to use the AppDynamics Cluster Agent Visibility are provided here: (https://docs.appdynamics.com/display/PRO45/Use+The+Cluster+Agent)
 
 
 
