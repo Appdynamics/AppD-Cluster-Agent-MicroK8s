@@ -5,7 +5,7 @@ This lab provides the steps and automation to deploy the AppDynamics Cluster Age
 # MicroK8s
 
 Provides a simple and fast installation of fully-conformant Kubernetes.
-Read more: https://microk8s.io/
+Read about MicroK8s at [microk8s.io](https://microk8s.io/)
 
 # Getting started
 
@@ -30,7 +30,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` unzip the cluster:
 
 # Configure the Cluster Agent
 
-In the cluster directory, modify the cluster-agent.yaml
+In the cluster agent directory, modify the resource definition `cluster-agent.yaml`
 
 `cd cluster-agent`
 
@@ -44,7 +44,7 @@ account: "<account-name>"
 image: "docker.io/appdynamics/cluster-agent:4.5.16"
 ````
 
-The above uses the `image` provided by AppDynamics for Ubuntu. This ok for this lab.
+The above uses the Cluster Agent `image` provided by AppDynamics for Ubuntu. This ok for this lab.
 
 Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSpaces:
 ````
@@ -54,10 +54,11 @@ Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSp
     - appdynamics
     - kube-system
 ````
+For more details, review [Install The Cluster Agent](https://docs.appdynamics.com/display/PRO45/Install+the+Cluster+Agent)
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
 
-In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script ctl.sh:
+In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script `ctl.sh`
 
 ### Update Ubuntu
 ````./ctl.sh ubuntu-update````
@@ -77,7 +78,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using 
 
 ````./ctl.sh pods-create````
 
-The above command will create a namespace called "test" and deploy two pods (alpine1,alpine2) with single containers, and two services (busyboxes1, busyboxes2) each with two containers.
+The above command will create a namespace called "test" and deploy two pods (alpine1, alpine2) with single containers, and two services (busyboxes1, busyboxes2) each with two containers.
 
 Review the K8s resource definitions in the directory pods for details of these resources.
 
@@ -87,7 +88,7 @@ Rewview what services, pods, namesspaces are running in the cluster using the co
 
 # Deploy the AppDynamics Cluster Agent
 
-Obtain the Account Access Key from AppDynamics SaaS controller and configure the enviroment variable:
+Obtain the Account Access Key from the AppDynamics SaaS controller and configure the enviroment variable:
 
 `export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=<access-key>`
 
@@ -99,11 +100,11 @@ Deploy and start the AppDynamics Cluster Agent using the command:
 
 Please note the above command will look for the Cluster Agent resources in the sub-directory `cluster-agent`
 
-Check that the AppDynamics Cluster Agent and Operator are in the `Running` state to the cluster and running succesfully:
+Check that the AppDynamics Cluster Agent and Operator are in the `Running` state`, using the command:
 
 ````microk8s.kubectl get pods,services --all-namespaces````
 
-If errors are reported, check the resource defintion file `cluster-agent.yaml`. Additonal steps are required for SSL and proxy services. See: (https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
+If errors are reported, check the resource defintion file `cluster-agent.yaml`. Additonal steps are required for SSL and proxy services. See [Proxy and SSL Configuration](https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
 
 # AppDynamics Cluster Agent Visibilty
 
@@ -111,10 +112,10 @@ Login into the AppDynamics Conroller and click through the Servers tab to the Cl
 
 Click into this cluster to see the visibility AppDynamics provides into Kubernetes.
 
-Details of how to use the AppDynamics Cluster Agent Visibility are provided here: (https://docs.appdynamics.com/display/PRO45/Use+The+Cluster+Agent)
+Details of how to use the AppDynamics Cluster Agent Visibility are provided here: [Use the Cluster Agent](https://docs.appdynamics.com/display/PRO45/Use+The+Cluster+Agent)
 
 # Next Steps
 
 Review the automation script `ctl.sh` for exact details of how this deployment was performed and configured.
 
-
+Thank you for using this lab please provide feedback. Fork, improve and PR.
