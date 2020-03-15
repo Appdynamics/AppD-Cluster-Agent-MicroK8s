@@ -81,30 +81,45 @@ _MicroK8s_Start() {
 _AppDynamics_Install_ClusterAgent() {
 
   # Set the controller access Key
-  export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY="xyzxyz"
+  #export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY="xyzxyz"
+  _validateEnvironmentVars "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY"
 
   # Edit  cluster-agent.yaml
   # Modify  appName, controllerUrl, account
   # Set  image: "docker.io/appdynamics/cluster-agent:4.5.16"
   # Add additional namespaces to monitor under nsToMonitor:
 
-  kubectl create namespace appdynamics
+  $KUBECTL_CMD create namespace appdynamics
 
-  kubectl get namespace
+  $KUBECTL_CMD get namespace
 
-  kubectl create -f cluster-agent-operator.yaml
+  $KUBECTL_CMD create -f cluster-agent-operator.yaml
 
-  kubectl -n appdynamics get pods
+  $KUBECTL_CMD -n appdynamics get pods
 
-  kubectl -n appdynamics create secret generic cluster-agent-secret \
+  $KUBECTL_CMD -n appdynamics create secret generic cluster-agent-secret \
           --from-literal=controller-key=$APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
   # kubectl -n appdynamics delete secret cluster-agent-secret
 
   # Start the cluster agent
-  kubectl create -f cluster-agent.yaml
+  $KUBECTL_CMD create -f cluster-agent.yaml
 
   # Stop the cluster agent
-  kubectl delete -f cluster-agent.yaml
+  #kubectl delete -f cluster-agent.yaml
+}
+
+_validateEnvironmentVars() {
+  echo "Validating environment variables for $1"
+  shift 1
+  VAR_LIST=("$@") # rebuild using all args
+  #echo $VAR_LIST
+  for i in "${VAR_LIST[@]}"; do
+    echo "$i=${!i}"
+    if [ -z ${!i} ] || [[ "${!i}" == REQUIRED_* ]]; then
+       echo "Environment variable not set: $i"; ERROR="1";
+    fi
+  done
+  [ "$ERROR" == "1" ] && { echo "Exiting"; exit 1; }
 }
 
 # Define the namespace and list of K8s resources to deploy into that namespace
