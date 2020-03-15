@@ -1,5 +1,7 @@
 # AppDynamics Cluster Agent Lab for MicroK8s
 
+This lab provides the steps and automation to deploy the AppDynamics Cluster Agent into a MicroK8s cluster in minutes
+
 # MicroK8s
 
 Provides a simple and fast installation of fully-conformant Kubernetes.
