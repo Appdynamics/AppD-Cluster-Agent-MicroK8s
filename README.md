@@ -5,7 +5,7 @@ This lab provides the steps and automation to deploy the AppDynamics Cluster Age
 # MicroK8s
 
 Provides a simple and fast installation of fully-conformant Kubernetes.
-Read more: https://microk8s.io/
+Read about MicroK8s at [microk8s.io](https://microk8s.io/)
 
 # Getting started
 
