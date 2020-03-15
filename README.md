@@ -69,12 +69,13 @@ In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using 
 ### Install MicroK8s
 ````./ctl.sh k8s-install````
 
+
 ### Start the MicroK8s Kubernetes Cluster
 ````./ctl.sh k8s-start````
 
 # Deploy Pods to the MicroK8s Kubernetes Cluster
 
-In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script ctl.sh:
+In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script `ctl.sh`
 
 ````./ctl.sh pods-create````
 
