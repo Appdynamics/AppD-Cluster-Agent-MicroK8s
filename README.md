@@ -9,7 +9,7 @@ Read more: https://microk8s.io/
 
 # Getting started
 
-This lab is designed to run on Ubuntu
+This lab is designed to run on Ubuntu, using MicroK8s and Docker CE
 
 git clone https://github.com/APPDRYDER/AppD-Cluster-Agent-MicroK8s.git
 
