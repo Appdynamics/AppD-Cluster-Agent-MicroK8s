@@ -1,4 +1,9 @@
-# AppDynamics Cluster Agent Lab for microK8s
+# AppDynamics Cluster Agent Lab for MicroK8s
+
+# MicroK8s
+
+Provides a simple and fast installation of fully-conformant Kubernetes.
+Read more: https://microk8s.io/
 
 # Getting started
 
