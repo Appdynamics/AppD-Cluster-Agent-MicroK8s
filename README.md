@@ -54,6 +54,7 @@ Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSp
     - appdynamics
     - kube-system
 ````
+For more details, review [Install The Cluster Agent](https://docs.appdynamics.com/display/PRO45/Install+the+Cluster+Agent)
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
 
@@ -103,7 +104,7 @@ Check that the AppDynamics Cluster Agent and Operator are in the `Running` state
 
 ````microk8s.kubectl get pods,services --all-namespaces````
 
-If errors are reported, check the resource defintion file `cluster-agent.yaml`. Additonal steps are required for SSL and proxy services. See: (https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
+If errors are reported, check the resource defintion file `cluster-agent.yaml`. Additonal steps are required for SSL and proxy services. See [Proxy and SSL Configuration](https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
 
 # AppDynamics Cluster Agent Visibilty
 
@@ -111,10 +112,10 @@ Login into the AppDynamics Conroller and click through the Servers tab to the Cl
 
 Click into this cluster to see the visibility AppDynamics provides into Kubernetes.
 
-Details of how to use the AppDynamics Cluster Agent Visibility are provided here: (https://docs.appdynamics.com/display/PRO45/Use+The+Cluster+Agent)
+Details of how to use the AppDynamics Cluster Agent Visibility are provided here: [Use the Cluster Agent](https://docs.appdynamics.com/display/PRO45/Use+The+Cluster+Agent)
 
 # Next Steps
 
 Review the automation script `ctl.sh` for exact details of how this deployment was performed and configured.
 
-
+Thank you for using this lab please provide feed back. Fork, improve and PR.
