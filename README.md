@@ -69,6 +69,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using 
 ### Install MicroK8s
 ````./ctl.sh k8s-install````
 
+The `docker-install` and `k8s-install` require the current ssh/shell session to be restarted, for the usermod command to work successfully. Exit the current ssh/shell session to continue.
 
 ### Start the MicroK8s Kubernetes Cluster
 ````./ctl.sh k8s-start````
