@@ -49,10 +49,10 @@ The above uses the `image` provided by AppDynamics for Ubuntu. This ok for this 
 Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSpaces:
 ````
   nsToMonitor:
-    test
-    default
-    appdynamics
-    kube-system
+    - test
+    - default
+    - appdynamics
+    - kube-system
 ````
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
@@ -87,18 +87,23 @@ Rewview what services, pods, namesspaces are running in the cluster using the co
 
 # Deploy the AppDynamics Cluster Agent
 
-In the directory `cluster-agent`
-
 Obtain the Account Access Key from AppDynamics SaaS controller and configure the enviroment variable:
 
 `export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=<access-key>`
 
+In the directory `AppD-Cluster-Agent-Microk8s`
+
 Deploy and start the AppDynamics Cluster Agent using the command:
+
 `./ctl.sh appd-install-cluster-agent`
 
-Check that the AppDynamics Cluster Agent and Operator are deployed to the cluster and running succesfully:
+Please note the above command will look for the Cluster Agent resources in the sub-directory `cluster-agent`
+
+Check that the AppDynamics Cluster Agent and Operator are in the `Running` state to the cluster and running succesfully:
 
 ````microk8s.kubectl get pods,services --all-namespaces````
+
+If errors are reported, check the resource defintion file `cluster-agent.yaml`. Additonal steps are required for SSL and proxy services. See: (https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
 
 # AppDynamics Cluster Agent Visibilty
 
