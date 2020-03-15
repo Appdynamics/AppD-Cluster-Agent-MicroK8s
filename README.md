@@ -9,8 +9,11 @@ Read more: https://microk8s.io/
 
 # Getting started
 
+This lab is designed to run on Ubuntu
+
 git clone https://github.com/APPDRYDER/AppD-Cluster-Agent-MicroK8s.git
-cd AppD-Cluster-Agent-Microk8s
+
+`cd AppD-Cluster-Agent-Microk8s`
 
 # AppDynamics Cluster agent
 
