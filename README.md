@@ -62,7 +62,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using 
 ### Update Ubuntu
 ````./ctl.sh ubuntu-update````
 
-### Install Docker Communit Edition
+### Install Docker Community Edition
 ````./ctl.sh docker-install````
 
 ### Install MicroK8s
