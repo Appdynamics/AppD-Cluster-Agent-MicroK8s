@@ -87,6 +87,7 @@ _MicroK8s_Start() {
 
 
 _AppDynamics_Install_ClusterAgent() {
+  K8S_OP=${1:-"replace"}
 
   # Set the controller access Key
   #export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY="xyzxyz"
@@ -103,7 +104,7 @@ _AppDynamics_Install_ClusterAgent() {
     $KUBECTL_CMD get namespace
 
     # Note use of replace
-    $KUBECTL_CMD replace -f $CLUSTER_AGENT_DIR/cluster-agent-operator.yaml
+    $KUBECTL_CMD $K8S_OP -f $CLUSTER_AGENT_DIR/cluster-agent-operator.yaml
 
     $KUBECTL_CMD -n appdynamics get pods
 
@@ -117,7 +118,7 @@ _AppDynamics_Install_ClusterAgent() {
     $KUBECTL_CMD get secrets --namespace=appdynamics
 
     # Start the cluster agent
-    $KUBECTL_CMD replace -f $CLUSTER_AGENT_DIR/cluster-agent.yaml
+    $KUBECTL_CMD $K8S_OP -f $CLUSTER_AGENT_DIR/cluster-agent.yaml
 
     # Stop the cluster agent
     #kubectl delete -f cluster-agent.yaml
@@ -127,6 +128,14 @@ _AppDynamics_Install_ClusterAgent() {
     echo "Expected `pwd`/$CLUSTER_AGENT_DIR"
   fi
 }
+
+_AppDynamics_Delete_ClusterAgent() {
+  $KUBECTL_CMD delete -f $CLUSTER_AGENT_DIR/cluster-agent.yaml
+  $KUBECTL_CMD delete -f $CLUSTER_AGENT_DIR/cluster-agent-operator.yaml
+  $KUBECTL_CMD --namespace=appdynamics delete secret cluster-agent-secret
+  $KUBECTL_CMD delete namespace appdynamics
+}
+
 
 _validateEnvironmentVars() {
   echo "Validating environment variables for $1"
@@ -190,8 +199,14 @@ case "$CMD_LIST" in
     sudo snap disable microk8s
     sudo snap enable microk8s
     ;;
-  appd-install-cluster-agent)
-    _AppDynamics_Install_ClusterAgent
+  appd-create-cluster-agent)
+    _AppDynamics_Install_ClusterAgent "create"
+    ;;
+  appd-replace-cluster-agent)
+    _AppDynamics_Install_ClusterAgent "replace"
+    ;;
+  appd-delete-cluster-agent)
+    _AppDynamics_Delete_ClusterAgent
     ;;
   services)
     $KUBECTL_CMD get services --all-namespaces -o wide
@@ -217,7 +232,7 @@ case "$CMD_LIST" in
     echo "Test"
     ;;
   help)
-    echo "ubuntu-update, docker-install, k8s-install, k8s-start"
+    echo "ubuntu-update, docker-install, k8s-install, k8s-start, pods-create, appd-install-cluster-agent"
     ;;
   *)
     echo "Not Found " "$@"
