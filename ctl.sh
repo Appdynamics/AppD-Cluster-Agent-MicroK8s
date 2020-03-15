@@ -104,9 +104,14 @@ _AppDynamics_Install_ClusterAgent() {
 
     $KUBECTL_CMD -n appdynamics get pods
 
-    $KUBECTL_CMD -n appdynamics delete secret cluster-agent-secret
-    $KUBECTL_CMD -n appdynamics create secret generic cluster-agent-secret \
-            --from-literal=controller-key=$APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
+    $KUBECTL_CMD --namespace=appdynamics delete secret cluster-agent-secret
+    sleep 5 # Allow Time for delete
+
+    $KUBECTL_CMD --namespace=appdynamics create secret generic cluster-agent-secret \
+                 --from-literal=controller-key="$APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY"
+    sleep 5 # Allow time for create
+
+    $KUBECTL_CMD get secrets --namespace=appdynamics
 
     # Start the cluster agent
     $KUBECTL_CMD replace -f $CLUSTER_AGENT_DIR/cluster-agent.yaml
