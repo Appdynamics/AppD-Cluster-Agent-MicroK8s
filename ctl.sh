@@ -29,16 +29,19 @@ _DockerCE_Install() {
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
   apt-cache policy docker-ce
   sudo apt -yqq install docker-ce
+  # Need to exit shell/ssh session for the following command to take effect
+  sudo usermod -aG docker ${USER}
+  echo "Exit shell/ssh session and re-enter"
 
   # Validate Docker Version and status
-  docker version
-  sudo usermod -aG docker ${USER}
-  sudo systemctl status docker
+  #docker version
+
+  #sudo systemctl status docker
 
   # Pull Ubuntu Docker image into local repository
-  docker pull ubuntu
-  docker images
-  docker search ubuntu
+  #docker pull ubuntu
+  #docker images
+  #docker search ubuntu
 }
 
 
@@ -51,7 +54,7 @@ _MicroK8s_Install() {
   sudo snap version
 
   # Install MicroK8s
-  sudo snap install microk8s
+  sudo snap install microk8s --classic
   snap list
   microk8s.start
   sudo microk8s.status --wait-ready
