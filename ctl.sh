@@ -72,6 +72,14 @@ _MicroK8s_Install() {
 _MicroK8s_Start() {
   # Start and enable services on MicoK8s
   # https://microk8s.io/docs/commands
+
+  # Make sure session restarted for  'sudo usermod -a -G microk8s ubuntu' to work
+  microk8s.kubectl version >> /dev/null
+  if [ $? == 1 ]; then
+    echo ">>>> Exit current session: shell/ssh, and re-enter for previous usermod command to work <<<<"
+    exit 1
+  fi
+
   microk8s.start
 
   # Enable DNS service
@@ -230,6 +238,11 @@ case "$CMD_LIST" in
     # kc proxy
     # ssh -N -L 8888:localhost:8001 r-apps
     # http://localhost:8888/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
+    ;;
+  group-remove)
+    # Testing
+    sudo gpasswd -d $USER microk8s
+    sudo gpasswd -d $USER docker
     ;;
   test)
     echo "Test"
