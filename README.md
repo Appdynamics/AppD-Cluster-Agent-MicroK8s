@@ -3,6 +3,7 @@
 # Getting started
 
 git clone https://github.com/APPDRYDER/AppD-Cluster-Agent-MicroK8s.git
+cd AppD-Cluster-Agent-Microk8s
 
 # AppDynamics Cluster agent
 
@@ -12,4 +13,8 @@ This will download the file: appdynamics-cluster-agent-ubuntu-4.5.16.780.zip
 
 # Unzip the cluster agent into the directory cluster-agent
 
-unzip appdynamics-cluster-agent-ubuntu-4.5.16.780.zip -d cluster-agent
+In the directory: AppD-Cluster-Agent-Microk8s
+
+`unzip appdynamics-cluster-agent-ubuntu-4.5.16.780.zip -d cluster-agent`
+
+
