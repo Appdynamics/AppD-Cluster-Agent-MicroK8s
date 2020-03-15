@@ -31,7 +31,8 @@ _DockerCE_Install() {
   sudo apt -yqq install docker-ce
   # Need to exit shell/ssh session for the following command to take effect
   sudo usermod -aG docker ${USER}
-  echo "Exit shell/ssh session and re-enter"
+  echo ""
+  echo ">>>> Exit current session: shell/ssh, and re-enter for previous usermod command to work <<<<"
 
   # Validate Docker Version and status
   #docker version
@@ -62,7 +63,9 @@ _MicroK8s_Install() {
 
   # Need to exit shell/ssh session for the following command to take effect
   sudo usermod -a -G microk8s ubuntu
-  echo "Exit shell/ssh session and re-enter"
+  #newgrp microk8s # fix exit shell?
+  echo ""
+  echo ">>>> Exit current session: shell/ssh, and re-enter for previous usermod command to work <<<<"
 }
 
 
