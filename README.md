@@ -99,9 +99,11 @@ Deploy and start the AppDynamics Cluster Agent using the command:
 
 Please note the above command will look for the Cluster Agent resources in the sub-directory `cluster-agent`
 
-Check that the AppDynamics Cluster Agent and Operator are deployed to the cluster and running succesfully:
+Check that the AppDynamics Cluster Agent and Operator are in the `Running` state to the cluster and running succesfully:
 
 ````microk8s.kubectl get pods,services --all-namespaces````
+
+If errors are reported, check the resource defintion file `cluster-agent.yaml`. Additonal steps are required for SSL and proxy services. See: (https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
 
 # AppDynamics Cluster Agent Visibilty
 
