@@ -46,7 +46,7 @@ image: "docker.io/appdynamics/cluster-agent:4.5.16"
 
 The above uses the Cluster Agent `image` provided by AppDynamics for Ubuntu. This ok for this lab.
 
-Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSpaces:
+Add aditonal namespaces to monitor. Add the field nsToMonitor and the namespaces:
 ````
   nsToMonitor:
     - test
