@@ -49,10 +49,10 @@ The above uses the `image` provided by AppDynamics for Ubuntu. This ok for this 
 Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSpaces:
 ````
   nsToMonitor:
-    test
-    default
-    appdynamics
-    kube-system
+    - test
+    - default
+    - appdynamics
+    - kube-system
 ````
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
