@@ -1,9 +1,14 @@
 #!/bin/bash
 #
+# AppDynmaics Cluster Agent Automation Script for MicroK8s kubernetes
+#
+# Maintainer: David Ryder, david.ryder@appdynamics.com
+#
 #
 CMD_LIST=${1:-"help"}
 
 export KUBECTL_CMD="microk8s.kubectl"
+export CLUSTER_AGENT_DIR="cluster-agent"
 
 _Ubuntu_Update() {
   # Update Ubuntu - quiet install, non noninteractive
@@ -82,30 +87,37 @@ _AppDynamics_Install_ClusterAgent() {
 
   # Set the controller access Key
   #export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY="xyzxyz"
-  _validateEnvironmentVars "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY"
+  _validateEnvironmentVars "AppDynamics Controller" "APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY"
 
   # Edit  cluster-agent.yaml
   # Modify  appName, controllerUrl, account
   # Set  image: "docker.io/appdynamics/cluster-agent:4.5.16"
   # Add additional namespaces to monitor under nsToMonitor:
 
-  $KUBECTL_CMD create namespace appdynamics
+  if [[ -d "$CLUSTER_AGENT_DIR" ]]; then
+    $KUBECTL_CMD create namespace appdynamics
 
-  $KUBECTL_CMD get namespace
+    $KUBECTL_CMD get namespace
 
-  $KUBECTL_CMD create -f cluster-agent-operator.yaml
+    # Note use of replace
+    $KUBECTL_CMD replace -f $CLUSTER_AGENT_DIR/cluster-agent-operator.yaml
 
-  $KUBECTL_CMD -n appdynamics get pods
+    $KUBECTL_CMD -n appdynamics get pods
 
-  $KUBECTL_CMD -n appdynamics create secret generic cluster-agent-secret \
-          --from-literal=controller-key=$APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
-  # kubectl -n appdynamics delete secret cluster-agent-secret
+    $KUBECTL_CMD -n appdynamics delete secret cluster-agent-secret
+    $KUBECTL_CMD -n appdynamics create secret generic cluster-agent-secret \
+            --from-literal=controller-key=$APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
 
-  # Start the cluster agent
-  $KUBECTL_CMD create -f cluster-agent.yaml
+    # Start the cluster agent
+    $KUBECTL_CMD replace -f $CLUSTER_AGENT_DIR/cluster-agent.yaml
 
-  # Stop the cluster agent
-  #kubectl delete -f cluster-agent.yaml
+    # Stop the cluster agent
+    #kubectl delete -f cluster-agent.yaml
+  else
+    echo "could not find Cluster Agent directory: ($CLUSTER_AGENT_DIR)"
+    echo "Current directory is `pwd`"
+    echo "Expected `pwd`/$CLUSTER_AGENT_DIR"
+  fi
 }
 
 _validateEnvironmentVars() {
@@ -116,7 +128,7 @@ _validateEnvironmentVars() {
   for i in "${VAR_LIST[@]}"; do
     echo "$i=${!i}"
     if [ -z ${!i} ] || [[ "${!i}" == REQUIRED_* ]]; then
-       echo "Environment variable not set: $i"; ERROR="1";
+       echo "Please set the Environment variable: $i"; ERROR="1";
     fi
   done
   [ "$ERROR" == "1" ] && { echo "Exiting"; exit 1; }
