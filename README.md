@@ -41,8 +41,10 @@ Modify the fields:
 appName: "<app-name>"
 controllerUrl: "http://<appdynamics-controller-host>:8080"
 account: "<account-name>"
+image: "docker.io/appdynamics/cluster-agent:4.5.16"
 ````
 
+The above uses the `image` provided by AppDynamics for Ubuntu. This ok for this lab.
 
 Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSpaces:
 ````
