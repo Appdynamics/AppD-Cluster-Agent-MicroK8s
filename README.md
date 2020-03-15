@@ -24,7 +24,7 @@ This will download the zip archive: appdynamics-cluster-agent-ubuntu-4.5.16.780.
 
 # Install the AppDynamics Cluster Agent
 
-In the directory: AppD-Cluster-Agent-Microk8s unzip the cluster:
+In the directory `AppD-Cluster-Agent-Microk8s` unzip the cluster:
 
 `unzip appdynamics-cluster-agent-ubuntu-4.5.16.780.zip -d cluster-agent`
 
@@ -57,7 +57,7 @@ Add an aditonal namespaces to monitor. Add the field nsToMonitor and the namesSp
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
 
-In the directory: AppD-Cluster-Agent-Microk8s run the following commands using the script ctl.sh:
+In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script ctl.sh:
 
 ### Update Ubuntu
 ````./ctl.sh ubuntu-update````
@@ -73,7 +73,7 @@ In the directory: AppD-Cluster-Agent-Microk8s run the following commands using t
 
 # Deploy Pods to the MicroK8s Kubernetes Cluster
 
-In the directory: AppD-Cluster-Agent-Microk8s run the following commands using the script ctl.sh:
+In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script ctl.sh:
 
 ````./ctl.sh pods-create````
 
@@ -87,7 +87,7 @@ Rewview what services, pods, namesspaces are running in the cluster using the co
 
 # Deploy the AppDynamics Cluster Agent
 
-In the directory: cluster-agent
+In the directory `cluster-agent`
 
 Obtain the Account Access Key from AppDynamics SaaS controller and configure the enviroment variable:
 
@@ -108,7 +108,8 @@ Click into this cluster to see the visibility AppDynamics provides into Kubernet
 
 Details of how to use the AppDynamics Cluster Agent Visibility are provided here: (https://docs.appdynamics.com/display/PRO45/Use+The+Cluster+Agent)
 
+# Next Steps
+
+Review the automation script `ctl.sh` for exact details of how this deployment was performed and configured.
 
 
-
-# NEXT
