@@ -1,0 +1,16 @@
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine2
+  namespace: test
+spec:
+  containers:
+  - image: alpine:3.2
+    command:
+      - /bin/sh
+      - "-c"
+      - "sleep 2h"
+    imagePullPolicy: IfNotPresent
+    name: alpine2
+  restartPolicy: Always

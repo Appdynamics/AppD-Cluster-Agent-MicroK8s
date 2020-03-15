@@ -1,0 +1,55 @@
+#
+# Deploys a service: busyboxes2 with two pods: busybox2a and busybox2b
+# With clusterIP: None - DNS is configured and will return a list of IPs for the pods in the service
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: busyboxes1
+  namespace: test
+spec:
+  selector:
+    name: busyboxes1
+  clusterIP: None
+  ports:
+  - name: web
+    port: 80
+    targetPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox1a
+  namespace: test
+  labels:
+    name: busyboxes1
+spec:
+  hostname: busybox1a
+  subdomain: busy
+  containers:
+  - image: busybox:1.28
+    command:
+      - sleep
+      - "3600"
+    name: busybox
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox1b
+  namespace: test
+  labels:
+    name: busyboxes1
+spec:
+  hostname: busybox1b
+  subdomain: busy
+  containers:
+  - image: busybox:1.28
+    command:
+      - sleep
+      - "3600"
+    name: busybox
+    ports:
+    - containerPort: 80
