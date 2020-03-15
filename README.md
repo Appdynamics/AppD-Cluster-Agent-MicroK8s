@@ -87,14 +87,17 @@ Rewview what services, pods, namesspaces are running in the cluster using the co
 
 # Deploy the AppDynamics Cluster Agent
 
-In the directory `cluster-agent`
-
 Obtain the Account Access Key from AppDynamics SaaS controller and configure the enviroment variable:
 
 `export APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=<access-key>`
 
+In the directory `AppD-Cluster-Agent-Microk8s`
+
 Deploy and start the AppDynamics Cluster Agent using the command:
+
 `./ctl.sh appd-install-cluster-agent`
+
+Please note the above command will look for the Cluster Agent resources in the sub-directory `cluster-agent`
 
 Check that the AppDynamics Cluster Agent and Operator are deployed to the cluster and running succesfully:
 
