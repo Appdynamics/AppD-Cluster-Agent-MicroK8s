@@ -55,7 +55,7 @@ In the cluster agent directory `cluster-agent` edit the resource definition `clu
   ````
 For additional configuration options review [Configure The Cluster Agent](https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
 
-# Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
+# Update Ubuntu, install and configure MicroK8s Kubernetes Cluster:
 
 In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script `ctl.sh`
 
