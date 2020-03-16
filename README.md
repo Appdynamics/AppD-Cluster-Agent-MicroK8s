@@ -45,7 +45,7 @@ In the cluster agent directory `cluster-agent` edit the resource definition `clu
 
   Choose a unique `<app-name>` to represent this cluster. The above configuration uses the Cluster Agent `image` provided by AppDynamics for Ubuntu. This ok for this lab, however you can [Build the Cluster Agent Container Image](https://docs.appdynamics.com/display/PRO45/Build+the+Cluster+Agent+Container+Image) and source from a private respository.
 
-  Add additional `namespaces` to monitor. Add the field `nsToMonitor` and the following namespaces:
+  This lab deploys pods into the namespace `test`. Include additional `namespaces` to monitor by adding the field `nsToMonitor`, add the following namespaces:
   ````
     nsToMonitor:
       - test
@@ -53,7 +53,7 @@ In the cluster agent directory `cluster-agent` edit the resource definition `clu
       - appdynamics
       - kube-system
   ````
-For more details, review [Install The Cluster Agent](https://docs.appdynamics.com/display/PRO45/Install+the+Cluster+Agent)
+For additional configuration options review [Install The Cluster Agent](https://docs.appdynamics.com/display/PRO45/Install+the+Cluster+Agent)
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
 
