@@ -33,9 +33,7 @@ From the directory `AppD-Cluster-Agent-Microk8s` unzip the Cluster Agent into th
 
 From the AppDynamics SaaS controller obtain the following configuration parameters: `controllerUrl`, `Account Name` and `Access Key`
 
-In the cluster agent directory `cluster-agent` modify the resource definition `cluster-agent.yaml`.
-
-Edit cluster-agent.yaml
+In the cluster agent directory `cluster-agent` edit the resource definition `cluster-agent.yaml`:
 
   Modify the fields:
   ````
@@ -45,9 +43,9 @@ Edit cluster-agent.yaml
   image: "docker.io/appdynamics/cluster-agent:4.5.16"
   ````
 
-  Choose a unique `<app-name>` to represent this cluster. The above uses the Cluster Agent `image` provided by AppDynamics for Ubuntu. This ok for this lab, however you can [rebuild the cluster agent(https://docs.appdynamics.com/display/PRO45/Build+the+Cluster+Agent+Container+Image) and source from a private respository.
+  Choose a unique `<app-name>` to represent this cluster. The above configuration uses the Cluster Agent `image` provided by AppDynamics for Ubuntu. This ok for this lab, however you can [rebuild the cluster agent](https://docs.appdynamics.com/display/PRO45/Build+the+Cluster+Agent+Container+Image) and source from a private respository.
 
-  Add aditonal namespaces to monitor. Add the field `nsToMonitor` and the namespaces:
+  Add additional `namespaces` to monitor. Add the field `nsToMonitor` and the namespaces:
   ````
     nsToMonitor:
       - test
