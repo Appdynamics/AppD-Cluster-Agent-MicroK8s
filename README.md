@@ -1,6 +1,6 @@
 # AppDynamics Cluster Agent Lab for MicroK8s
 
-The goal of this lab is to deploy the [AppDynamics Cluster Agent](https://docs.appdynamics.com/display/PRO45/Monitoring+Kubernetes+with+the+Cluster+Agent) into a MicroK8s kubernetes cluster in minutes. 
+The goal of this lab is to deploy the [AppDynamics Cluster Agent](https://docs.appdynamics.com/display/PRO45/Monitoring+Kubernetes+with+the+Cluster+Agent) into a [MicroK8s](https://microk8s.io/) Kubernetes cluster in minutes. 
 
 Access to an [AppDynamics SaaS Controller](https://www.appdynamics.com/) is required.
 
@@ -31,7 +31,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` unzip the cluster:
 
 # Configure the Cluster Agent
 
-In the cluster agent directory, modify the resource definition `cluster-agent.yaml`. These configuration parameters can be obtained from the AppDynamics SaaS controller
+In the cluster agent directory, modify the resource definition `cluster-agent.yaml`. These configuration parameters can be obtained from the AppDynamics SaaS controller. The following paremters are needed: `controllerUrl`, `Account Name` and `Access Key`
 
   `cd cluster-agent`
 
