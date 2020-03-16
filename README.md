@@ -83,7 +83,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using 
 
 The above command will create a namespace called "test" and deploy two pods (alpine1, alpine2) with single containers, and two services (busyboxes1, busyboxes2) each with two containers.
 
-Review the K8s resource definitions in the directory pods for details of these resources.
+Review the K8s resource definitions in the directory ['pods'](https://github.com/APPDRYDER/AppD-Cluster-Agent-MicroK8s/tree/master/pods) for details of these resources.
 
 Review what services, pods, namesspaces are running in the cluster using the command:
 
