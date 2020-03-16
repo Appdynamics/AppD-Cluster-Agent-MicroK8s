@@ -103,15 +103,19 @@ Deploy and start the AppDynamics Cluster Agent using the command:
 
 Please note the above command will look for the Cluster Agent resources in the sub-directory `cluster-agent`
 
-Check that the AppDynamics Cluster Agent and Operator are in the `Running` state`, using the command:
+Check that the AppDynamics Cluster Agent and Operator are in the `Running` state, using the command:
 
   ````microk8s.kubectl get pods,services --all-namespaces````
 
 If errors are reported, check the resource defintion file `cluster-agent.yaml`. Additonal steps are required for SSL and proxy services. See [Proxy and SSL Configuration](https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
 
-The Cluster Agent resources, agent, operator, secret and namespace, can be deleted using:
+The Cluster Agent resources: agent, operator, secret and namespace, can be deleted using:
 
   `./ctl.sh appd-delete-cluster-agent`
+  
+Then restarted using:
+
+  `./ctl.sh appd-create-cluster-agent`
 
 # AppDynamics Cluster Agent Visibilty
 
