@@ -1,6 +1,6 @@
 # AppDynamics Cluster Agent Lab for MicroK8s
 
-The goal of this lab is to deploy the [AppDynamics Cluster Agent[(https://docs.appdynamics.com/display/PRO45/Monitoring+Kubernetes+with+the+Cluster+Agent) into a MicroK8s kubernetes cluster in minutes. 
+The goal of this lab is to deploy the [AppDynamics Cluster Agent](https://docs.appdynamics.com/display/PRO45/Monitoring+Kubernetes+with+the+Cluster+Agent) into a MicroK8s kubernetes cluster in minutes. 
 
 Access to an [AppDynamics SaaS Controller](https://www.appdynamics.com/) is required.
 
