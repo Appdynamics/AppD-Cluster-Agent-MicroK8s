@@ -84,7 +84,7 @@ The above command will create a namespace called "test" and deploy two pods (alp
 
 Review the K8s resource definitions in the directory pods for details of these resources.
 
-Rewview what services, pods, namesspaces are running in the cluster using the command:
+Review what services, pods, namesspaces are running in the cluster using the command:
 
 ````microk8s.kubectl get pods,services --all-namespaces````
 
