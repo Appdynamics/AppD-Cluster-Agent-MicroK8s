@@ -18,16 +18,16 @@ This lab is designed to run on Ubuntu, using MicroK8s and Docker CE. Clone this 
 
 # AppDynamics Cluster agent
 
-Download the Ubuntu cluster agent from: [AppDynamics Downloads](https://download.appdynamics.com/download/#version=&apm=cluster-agent&os=&platform_admin_os=&appdynamics_cluster_os=&events=&eum=&page=1
-)
+Download the AppDynamics Ubuntu cluster agent from: [AppDynamics Downloads](https://download.appdynamics.com/download/#version=&apm=cluster-agent&os=&platform_admin_os=&appdynamics_cluster_os=&events=&eum=&page=1
+) into the directory `AppD-Cluster-Agent-Microk8s`
 
-This will download the zip archive `appdynamics-cluster-agent-ubuntu-4.5.16.780.zip`
+This will download the zip archive `appdynamics-cluster-agent-ubuntu-4.5.16.780.zip` or a higher version.
 
 # Install the AppDynamics Cluster Agent
 
-Unzip the Cluster Agent into the directory `AppD-Cluster-Agent-Microk8s/cluster-agent` using:
+From the directory `AppD-Cluster-Agent-Microk8s` unzip the Cluster Agent into the directory `cluster-agent` using:
 
-  `unzip appdynamics-cluster-agent-ubuntu-4.5.16.780.zip -d AppD-Cluster-Agent-Microk8s/cluster-agent`
+  `unzip appdynamics-cluster-agent-ubuntu-4.5.16.780.zip -d cluster-agent`
 
 # Configure the Cluster Agent
 
