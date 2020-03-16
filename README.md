@@ -45,7 +45,7 @@ In the cluster agent directory `cluster-agent` edit the resource definition `clu
 
   Choose a unique `<app-name>` to represent this cluster. The above configuration uses the Cluster Agent `image` provided by AppDynamics for Ubuntu. This ok for this lab, however you can [Build the Cluster Agent Container Image](https://docs.appdynamics.com/display/PRO45/Build+the+Cluster+Agent+Container+Image) and source from a private respository.
 
-  Add additional `namespaces` to monitor. Add the field `nsToMonitor` and the namespaces:
+  Add additional `namespaces` to monitor. Add the field `nsToMonitor` and the following namespaces:
   ````
     nsToMonitor:
       - test
