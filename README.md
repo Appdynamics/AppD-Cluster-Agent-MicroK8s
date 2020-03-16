@@ -124,4 +124,4 @@ Details of how to use the AppDynamics Cluster Agent Visibility are provided here
 
 Review the automation script `ctl.sh` for exact details of how this deployment was performed and configured.
 
-Thank you for using this lab please provide feedback. Fork, improve and PR.
+Thank you for using this lab please provide feedback. Please fork, improve and submit pull requests.
