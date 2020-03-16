@@ -31,7 +31,7 @@ In the directory `AppD-Cluster-Agent-Microk8s` unzip the cluster:
 
 # Configure the Cluster Agent
 
-In the cluster agent directory, modify the resource definition `cluster-agent.yaml`. These configuration parameters can be obtained from the AppDynamics SaaS controller. The following paremters are needed: `controllerUrl`, `Account Name` and `Access Key`
+In the cluster agent directory, modify the resource definition `cluster-agent.yaml`. These configuration parameters can be obtained from the AppDynamics SaaS controller. The following parameters are needed: `controllerUrl`, `Account Name` and `Access Key`
 
   `cd cluster-agent`
 
