@@ -53,7 +53,7 @@ In the cluster agent directory `cluster-agent` edit the resource definition `clu
       - appdynamics
       - kube-system
   ````
-For additional configuration options review [Install The Cluster Agent](https://docs.appdynamics.com/display/PRO45/Install+the+Cluster+Agent)
+For additional configuration options review [Configure The Cluster Agent](https://docs.appdynamics.com/display/PRO45/Configure+the+Cluster+Agent)
 
 # Update Ubuntu Operating System, install and configure MicroK8s Kubernetes Cluster:
 
