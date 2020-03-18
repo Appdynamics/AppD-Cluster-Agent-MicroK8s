@@ -83,17 +83,17 @@ _MicroK8s_Start() {
   microk8s.start
 
   # Enable DNS service
-  microk8s.enable dns
+  sudo microk8s.enable dns
 
   # Enable metrics-server - enables K8s metric collection APIs
-  microk8s.enable metrics-server
+  sudo microk8s.enable metrics-server
 
   # Enable the default K8s Dashboard service
   #microk8s.enable dashboard
 
   # View services and pods
-  microk8s.kubectl get services --all-namespaces
-  microk8s.kubectl get pods --all-namespaces
+  sudo microk8s.kubectl get services --all-namespaces
+  sudo microk8s.kubectl get pods --all-namespaces
 }
 
 
