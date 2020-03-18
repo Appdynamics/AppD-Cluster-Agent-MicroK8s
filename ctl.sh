@@ -57,9 +57,9 @@ _MicroK8s_Install() {
   # Install MicroK8s
   sudo snap install microk8s --classic
   snap list
-  microk8s.start
+  sudo microk8s.start
   sudo microk8s.status --wait-ready
-  microk8s.status
+  sudo microk8s.status
 
   # Need to exit shell/ssh session for the following command to take effect
   sudo usermod -a -G microk8s ubuntu
