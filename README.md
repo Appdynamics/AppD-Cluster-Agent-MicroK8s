@@ -73,6 +73,22 @@ In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using 
   ### Start the MicroK8s Kubernetes Cluster
   ````./ctl.sh k8s-start````
 
+Review the pods and services running in the cluster using:
+
+```microk8s.kubectl get pods,services --all-namespaces```
+
+```
+NAMESPACE     NAME                                        READY   STATUS    RESTARTS   AGE
+kube-system   pod/coredns-7b67f9f8c-8s6zq                 1/1     Running   1          113s
+kube-system   pod/metrics-server-v0.2.1-598c8978c-c2vjf   2/2     Running   0          107s
+
+NAMESPACE     NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                  AGE
+default       service/kubernetes       ClusterIP   10.152.183.1     <none>        443/TCP                  2m52s
+kube-system   service/kube-dns         ClusterIP   10.152.183.10    <none>        53/UDP,53/TCP,9153/TCP   113s
+kube-system   service/metrics-server   ClusterIP   10.152.183.207   <none>        443/TCP                  107s
+```
+The `kube-dbs` and `metrics-server` should be running in the cluster.
+
 # Deploy Pods to the MicroK8s Kubernetes Cluster
 
 In the directory `AppD-Cluster-Agent-Microk8s` run the following commands using the script `ctl.sh`
@@ -85,7 +101,21 @@ Review the K8s resource definitions in the directory [pods](https://github.com/A
 
 Review what services, pods, namespaces are running in the cluster using the command:
 
-  ````microk8s.kubectl get pods,services --all-namespaces````
+  ````microk8s.kubectl get pods --all-namespaces````
+
+The output should show two alipine pods and four busybox pods running:
+
+```
+NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
+kube-system   coredns-7b67f9f8c-8s6zq                 1/1     Running   1          5m30s
+kube-system   metrics-server-v0.2.1-598c8978c-c2vjf   2/2     Running   0          5m24s
+test          alpine1                                 1/1     Running   0          20s
+test          alpine2                                 1/1     Running   0          20s
+test          busybox1a                               1/1     Running   0          20s
+test          busybox1b                               1/1     Running   0          20s
+test          busybox2a                               1/1     Running   0          19s
+test          busybox2b                               1/1     Running   0          19s
+```
 
 # Deploy the AppDynamics Cluster Agent
 
