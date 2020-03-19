@@ -99,11 +99,11 @@ The above command will create a namespace called "test" and deploy two pods (alp
 
 Review the K8s resource definitions in the directory [pods](https://github.com/APPDRYDER/AppD-Cluster-Agent-MicroK8s/tree/master/pods) for details of these resources.
 
-Review what services, pods, namespaces are running in the cluster using the command:
+Review what pods and namespaces are running in the cluster using the command:
 
   ````microk8s.kubectl get pods --all-namespaces````
 
-The output should show two alipine pods and four busybox pods running:
+The output should show two alpine pods and four busybox pods running:
 
 ```
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
